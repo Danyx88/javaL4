@@ -35,9 +35,9 @@ console.log(crazySum(8, 8));
 
 function crazyDiff(num4) {
   if (num4 > 19) {
-    return (num4 - 19) * 3;
+    return Math.abs(num4 - 19) * 3;
   } else {
-    return num4 - 19;
+    return Math.abs(num4 - 19);
   }
 }
 console.log(crazyDiff(20));
@@ -66,9 +66,15 @@ console.log(boundary(55));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function epify(name) {
-  return console.log("epicode" + name);
-}
+const epify = function (name) {
+  if (name.toUpperCase().startsWith("EPICODE")) {
+    return name;
+  } else {
+    return (name = "EPICODE" + name);
+  }
+};
+const stringEpify = epify("epicodebla");
+console.log(stringEpify);
 
 /* ESERCIZIO 6
  Scrivi una funzione di nome "check3and7" che accetta un numero positivo come parametro. La funzione deve controllare che il parametro sia un multiplo
@@ -94,15 +100,17 @@ console.log(check3and7(28));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function reverseString(phrase) {
-  const word = phrase.split("");
-  const reversword = [];
-  for (let i = 0; i < phrase.length; i++) {
-    reversword.unshift(word[i]);
-  }
-  return reversword.join("");
-}
-console.log(reverseString("EPICODE"));
+const reverseString = function (phrase) {
+  const letters = phrase.split("");
+  console.log(letters);
+  const reversed = letters.reverse();
+  console.log(reversed);
+  const joined = reversed.join("");
+  console.log(joined);
+  return joined;
+};
+const stringReverse = reverseString("EPICODE");
+console.log(stringReverse);
 
 /* ESERCIZIO 8
  Scrivi una funzione di nome "upperFirst", che riceve come parametro una stringa formata da diverse parole.
@@ -111,20 +119,23 @@ console.log(reverseString("EPICODE"));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function upperFirst(words) {
-  let maiusc = words.split("");
-  let letter;
-  if (typeof words === "string") {
-    for (let i = 0; i < maiusc.length; i++) {
-      letter = maiusc[i];
-      letter = maiusc[0].toUpperCase();
-      letter[1] = maiusc;
-    }
+const upperFirst = function (words) {
+  const stringWord = words.split(" ");
+  console.log(stringWord);
+  const sentence = [];
+
+  for (let i = 0; i < stringWord.length; i++) {
+    const singleWord = stringWord[i];
+    const firstLetter = singleWord.charAt(0);
+    const remainLetter = singleWord.slice(1);
+    const fullWord = firstLetter.concat(remainLetter);
+
+    sentence.push(fullWord);
   }
-  words = maiusc.join("");
-  return words;
-}
-console.log(upperFirst("rendere maiuscola la prima lettera di ogni parola"));
+  return sentence.join(" ");
+};
+stringFirst = upperFirst("rendere maiuscola la prima lettera di ogni parola");
+console.log(stringFirst);
 
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
